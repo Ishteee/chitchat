@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const path = require('path');
 
+const port = 5000;
+
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -76,6 +78,8 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log('Server running on http://localhost:3000');
-});
+// server.listen(3000, () => {
+//     console.log('Server running on http://localhost:3000');
+// });
+
+app.listen(process.env.PORT || port, () => console.log('Listening on port ${port}'))
