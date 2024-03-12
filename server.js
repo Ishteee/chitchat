@@ -51,7 +51,7 @@ app.post('/login', (req, res) => {
 
 app.get('/chat', (req, res) => {
     const username = req.session.username;
-    res.render('chat.html', { username: username });
+    res.sendFile(__dirname + '/chat.html');
 });
 
 
