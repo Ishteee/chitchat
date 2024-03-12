@@ -33,15 +33,15 @@ app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/login.html');
 });
 
-const { v4: uuidv4 } = require('uuid');
-const secretKey = uuidv4();
+// const { v4: uuidv4 } = require('uuid');
+// const secretKey = uuidv4();
 
 // Use express session middleware
-app.use(session({
-    secret: secretKey,
-    resave: false,
-    saveUninitialized: true
-}));
+// app.use(session({
+//     secret: secretKey,
+//     resave: false,
+//     saveUninitialized: true
+// }));
 
 app.post('/login', (req, res) => {
     const { username } = req.body;
