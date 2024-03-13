@@ -11,7 +11,8 @@
         height: 100vh;
         background-color: black; /* Set background color to black */
         color: white; /* Set text color to white */
-    }
+        flex-direction: column;
+    }  
 
         #users, #right {
             display: none; /* Hide the left and right sides initially */
@@ -19,7 +20,10 @@
 
         #left {
             flex: 1;
-            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            padding: 0px;
             border-right: 1px solid #ddd;
             overflow-y: auto;
         }
@@ -163,17 +167,53 @@
 
         #onlineusers {
             display: none;
+            margin: 0 auto;
+            width: 60%;
+        }
+
+        #users {
+            margin: 0 auto;
+            width: 75%;
+        }
+
+        .header {
+            width: 100%;
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            height: 100vh;
+        }
+
+        .tagline {
+            width: 100%;
+            margin: 0 auto;
+            background-color: grey;
+        }
+
+        #messages-header {
+            padding-left: 20px;
         }
 
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>ChitChat</h1>
+        <div class="tagline"><h3>Chat anonymously with anyone on the internet.</h3></div>
+    </div>
+    <div class="container">
     <div id="left">
         <div id="username-container">
             <input id="username" autocomplete="off" placeholder="Enter your username..." />
             <button id="submit-username">Submit</button>
         </div>
-        <h3 id="onlineusers">Users Online:</h3>
+        <div id="onlineusers"><h3 >Users Online:</h3></div>
         <div id="users"></div>  
     </div>
     <div id="right">
@@ -184,6 +224,7 @@
             <button>Send</button>
         </form>
     </div>
+</div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
@@ -225,9 +266,23 @@
         usersContainer.addEventListener('click', function(e) {
     if (e.target && e.target.nodeName === 'DIV') {
         selectedUsername = e.target.textContent;
-        messagesHeader.textContent = 'Chat with ' + selectedUsername;
-        rightSide.style.display = 'block';
-
+        if(selectedUsername === 'Group Chat')
+        {
+            messagesHeader.textContent = selectedUsername;
+        }
+        else
+        {
+            messagesHeader.textContent = 'Chat with ' + selectedUsername;
+        }
+        if(selectedUsername !== 'No users online')
+        {
+            rightSide.style.display = 'block';
+        }
+        else
+        {
+            rightSide.style.display = 'none';
+        }
+        
         // Emit a message retrieval request to the server
         if(selectedUsername === 'Group Chat')
         {
