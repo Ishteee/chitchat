@@ -18,4 +18,5 @@ Summary of the Steps:
 12. Performed final touches in the index.html file for styling.
 
 We have hosted our website for free using render.com so that others can use this website for chatting on their respective devices.
+
 Website has been hosted at https://chitchat-s2if.onrender.com
