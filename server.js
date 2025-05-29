@@ -13,16 +13,6 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 
-
-
-
-
-
-
-
-
-
-
 app.set('views', __dirname);
 
 app.set('view engine', 'ejs');
@@ -147,13 +137,6 @@ async function run() {
     }
   }
   run().catch(console.dir);
-
-
-
-
-
-
-
 
 // io.on('connection', (socket) => {
 //     console.log('A user connected');
