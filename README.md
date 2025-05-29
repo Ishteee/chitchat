@@ -1,4 +1,4 @@
-The title of our project is ChitChat.
+The title of my project is ChitChat.
 
 We've developed a website using a Node.js server, allowing users to chat with others on the platform. Users can enter the chat with a chosen username, sending messages visible to all participants, akin to a group chat. Additionally, the website features a private chat platform, enabling users to engage in one-on-one conversations. These private chats are stored in the MongoDB database for future reference.
 
